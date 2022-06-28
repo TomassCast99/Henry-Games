@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Search from "../SearchBar/Search";
 
-//import "./Navbar.css";
+import "./Navbar.css";
 
 export default function Navbar({ paginated }) {
   return (
@@ -13,12 +13,11 @@ export default function Navbar({ paginated }) {
         </Link>
       </div>
       <div className="tittle">Henry Games</div>
+      <Search />
       <Link to={"/videogame"}>
         <button className="create-game">Create Videogame</button>
       </Link>
-      <div>
-        <Search />
-      </div>
+      <div></div>
     </div>
   );
 }

@@ -10,7 +10,6 @@ export default function Detail() {
   const gameDetail = useSelector((state) => state.detail);
   const dispatch = useDispatch();
 
-  console.log(gameDetail);
   useEffect(() => {
     dispatch(getDetail(id));
     return () => {
@@ -57,22 +56,11 @@ export default function Detail() {
             </div>
             <div className="base3">
               <h4>Platforms:</h4>
-              <ul>
-                {gameDetail.platform
-                  ? gameDetail.platform.map((e) => e).join(" || ")
-                  : ""}
-              </ul>
-              <ul>
-                {gameDetail.id?.length
-                  ? gameDetail.platform?.map((el) => el.name)
-                  : gameDetail.platform
-                      ?.map((el) => el.platform.name)
-                      .join(" || ")}
-              </ul>
+              <ul>{gameDetail[0].platform.map((e) => e + "-")}</ul>
             </div>
             <div className="base3">
               <h4>Description:</h4>
-              <p>{gameDetail[0].description}</p>
+              <p>{gameDetail.description}</p>
             </div>
           </div>
         </main>

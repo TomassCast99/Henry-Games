@@ -1,5 +1,5 @@
 import React from "react";
-//import "./Paginated.css";
+import "./Paginated.css";
 
 export default function Paginated({ gamesPerPage, useGames, paginated }) {
   const pageNumbers = [];

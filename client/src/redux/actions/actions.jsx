@@ -76,3 +76,10 @@ export function resState() {
     type: "RES_STATE",
   };
 }
+
+export function handlerOrder(payload) {
+  return {
+    type: "HANDLER_NAME",
+    payload: payload,
+  };
+}
