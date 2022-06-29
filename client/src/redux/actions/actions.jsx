@@ -33,11 +33,13 @@ export function getName(name) {
     axios
       .get(`http://localhost:3001/videogames?name=` + name)
       .then((res) => {
+        console.log("aca res", res.data);
         return dispatch({
           type: "GET_NAME",
           payload: res.data,
         });
       })
+
       .catch((err) => console.log(err));
   };
 }
@@ -83,3 +85,26 @@ export function handlerOrder(payload) {
     payload: payload,
   };
 }
+
+export function handleFilter(payload) {
+  return {
+    type: "HANDLE_FILTERS",
+    payload: payload,
+  };
+}
+
+export const handlerRating = (payload) => {
+  console.log(payload);
+  return {
+    type: "HANDLER_RATING",
+    payload: payload,
+  };
+};
+
+export const handlerGenres = (payload) => {
+  // este payload representa el valor de input, es decir el valor de nuestro select
+  return {
+    type: "HANDLER_GENRES",
+    payload: payload,
+  };
+};

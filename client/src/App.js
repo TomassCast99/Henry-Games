@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import "./App.css";
 import Landing from "./Components/Landing/Landing";
 import Home from "../src/Components/Home/Home";
-//import CreateDog from "./components/Create/CreateDog.jsx";
+import GameCreate from "./Components/Create/GameCreate";
 import Details from "./Components/Details/Details";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
-          {/* <Route path="/videogame" element={<CreateGame />} /> */}
+          <Route path="/videogame" element={<GameCreate />} />
           <Route path="/videogame/:id" element={<Details />} />
         </Routes>
       </div>

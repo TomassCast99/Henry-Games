@@ -12,6 +12,7 @@ export default function Search() {
   }, [dispatch]);
 
   function handleInputChange(e) {
+    e.preventDefault();
     setName(e.target.value);
     dispatch(getName(name));
   }

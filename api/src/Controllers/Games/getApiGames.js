@@ -23,7 +23,7 @@ const getApiGames = async (url) => {
           background_image: e.background_image,
           released: e.released,
           rating: e.rating,
-          description: e.description,
+          description: e.description_raw,
           genres: e.genres
             .map((e) => {
               return e.name;

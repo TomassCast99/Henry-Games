@@ -4,5 +4,30 @@
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 5px;
     grid-row-gap: 5px;
+    margin-top: 15px;
+margin-bottom: 15px;
     }
-   
+
+    
+.div-filt{
+    display: flex;
+grid-template-columns: repeat(4, 1fr);
+grid-template-rows: 0px;
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+margin-top: 25px;
+margin-bottom: 50px;
+justify-content: center;
+}  
+
+.div-buttons{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    margin: 0 auto;
+    padding-top: 60px;
+} 
+
+.Loader{
+justify-content: center;
+}

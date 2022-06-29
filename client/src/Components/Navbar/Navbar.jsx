@@ -12,7 +12,7 @@ export default function Navbar({ paginated }) {
           <button className="log-out">Log Out</button>
         </Link>
       </div>
-      <div className="tittle">Henry Games</div>
+      <div className="tittle2">Henry Games</div>
       <Search />
       <Link to={"/videogame"}>
         <button className="create-game">Create Videogame</button>

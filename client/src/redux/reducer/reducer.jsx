@@ -23,7 +23,8 @@ export default function reducer(state = initialState, { type, payload }) {
     case "GET_NAME":
       return {
         ...state,
-        games2: payload,
+        games: payload,
+        games2: state.games,
       };
 
     case "GET_DETAILS":
@@ -70,6 +71,60 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         games: sortAlf,
+      };
+
+    case "HANDLE_FILTERS":
+      let games2 = state.games;
+      const { genres, origin } = payload;
+      if (genres !== "All") {
+        games2 = games2.filter((videogame) =>
+          videogame.genres.includes(genres)
+        );
+      }
+      if (origin === "apiGames") {
+        games2 = games2.filter((videogame) => !videogame.createdDB);
+      } else if (origin === "dbGames") {
+        games2 = games2.filter((videogame) => videogame.createdDB);
+      }
+      return {
+        ...state,
+        games2,
+      };
+
+    case "HANDLER_RATING":
+      let rating =
+        payload === "desc"
+          ? state.games.sort(function (a, b) {
+              if (a.rating > b.rating) {
+                return 1;
+              }
+              if (b.rating > a.rating) {
+                return -1;
+              }
+              return 0;
+            })
+          : state.games.sort(function (a, b) {
+              if (a.rating > b.rating) {
+                return -1;
+              }
+              if (b.rating > a.rating) {
+                return 1;
+              }
+              return 0;
+            });
+      return {
+        ...state,
+        games: rating,
+      };
+
+    case "HANDLER_GENRES":
+      let generos =
+        payload === "all"
+          ? state.games2
+          : state.games2.filter((e) => e.genres.includes(payload));
+      return {
+        ...state,
+        games: generos,
       };
 
     default:
