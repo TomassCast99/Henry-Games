@@ -18,6 +18,7 @@ const getByName = async (name) => {
     const nameVideogame = await axios.get(
       `https://api.rawg.io/api/games?search=${name}&key=${YOUR_API_KEY}`
     );
+
     let gameName = [];
     if (nameVideogame.data) {
       let r = nameVideogame.data.results;

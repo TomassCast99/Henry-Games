@@ -4,7 +4,7 @@ import Paginated from "../Paginado/Paginated";
 import "./Home.css";
 
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+
 import {
   getGames,
   cleanFilters,
@@ -19,9 +19,10 @@ import Navbar from "../Navbar/Navbar";
 export default function Home() {
   const dispatch = useDispatch();
   const useGames = useSelector((state) => {
-    return state.games2;
+    return state.games;
   });
   const [name, setName] = useState("");
+  const [rating, setRating] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [gamesPerPage] = useState(15);
   const [range, setRange] = useState({ first: 0, last: 15 });
@@ -61,6 +62,7 @@ export default function Home() {
     e.preventDefault();
     dispatch(handlerOrder(name));
     setCurrentPage(1);
+    setCurrentGames(useGames?.slice(range.first, range.last));
     setAct(`${name}`);
   }
 
@@ -76,14 +78,18 @@ export default function Home() {
 
   function HandleFilterByRating(e) {
     e.preventDefault();
-    dispatch(handlerRating(e.target.value));
+    dispatch(handlerRating(rating));
     setCurrentPage(1);
+    setCurrentGames(useGames?.slice(range.first, range.last));
     setAct(`${e.target.value}`);
   }
 
   function HandleFilterByGenres(e) {
-    dispatch(handlerGenres(e.target.value));
+    e.preventDefault();
+    dispatch(handlerGenres(genres));
     setCurrentPage(1);
+    setCurrentGames(useGames?.slice(range.first, range.last));
+    setAct(`${e.target.value}`);
   }
 
   return (
@@ -124,11 +130,7 @@ export default function Home() {
               </option>
             </select>
 
-            <button
-              onClick={handleClickOrder}
-              setCurrentPage={setCurrentPage}
-              className="sort"
-            >
+            <button onClick={handleClickOrder} className="sort">
               Alphabetical Order
             </button>
           </div>
@@ -151,9 +153,9 @@ export default function Home() {
           <div className="box">
             <select
               className="bot"
-              // onChange={(e) => {
-              //   HandleFilterByRating(e);
-              // }}
+              onChange={(e) => {
+                setRating(e.target.value);
+              }}
             >
               <option value="all">All</option>
               <option value="asc">High Rating</option>
@@ -171,9 +173,9 @@ export default function Home() {
           <div className="box">
             <select
               className="bot"
-              // onChange={(e) => {
-              //   HandleFilterByGenres(e);
-              // }}
+              onChange={(e) => {
+                setGenres(e.target.value);
+              }}
             >
               <option value="all">All Games</option>
               <option value="RPG">RPG</option>

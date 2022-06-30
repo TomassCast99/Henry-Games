@@ -21,10 +21,15 @@ export default function reducer(state = initialState, { type, payload }) {
       };
 
     case "GET_NAME":
+      let nombres =
+        payload === ""
+          ? state.games2
+          : state.games2.filter((e) =>
+              e.name.toLowerCase().includes(payload.toLowerCase())
+            );
       return {
         ...state,
-        games: payload,
-        games2: state.games,
+        games: nombres,
       };
 
     case "GET_DETAILS":
@@ -48,7 +53,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case "HANDLER_NAME":
       let sortAlf;
       if (payload === "asc") {
-        sortAlf = state.games2.sort((a, b) => {
+        sortAlf = state.games.sort((a, b) => {
           if (a.name.charAt(0) > b.name.charAt(0)) {
             return 1;
           }
@@ -58,7 +63,7 @@ export default function reducer(state = initialState, { type, payload }) {
           return 0;
         });
       } else if (payload === "desc") {
-        sortAlf = state.games2.sort((a, b) => {
+        sortAlf = state.games.sort((a, b) => {
           if (a.name.charAt(0) > b.name.charAt(0)) {
             return -1;
           }
@@ -67,6 +72,8 @@ export default function reducer(state = initialState, { type, payload }) {
           }
           return 0;
         });
+      } else {
+        sortAlf = state.games2;
       }
       return {
         ...state,

@@ -29,18 +29,9 @@ export function getGenres() {
 }
 
 export function getName(name) {
-  return function (dispatch) {
-    axios
-      .get(`http://localhost:3001/videogames?name=` + name)
-      .then((res) => {
-        console.log("aca res", res.data);
-        return dispatch({
-          type: "GET_NAME",
-          payload: res.data,
-        });
-      })
-
-      .catch((err) => console.log(err));
+  return {
+    type: "GET_NAME",
+    payload: name,
   };
 }
 
@@ -94,7 +85,6 @@ export function handleFilter(payload) {
 }
 
 export const handlerRating = (payload) => {
-  console.log(payload);
   return {
     type: "HANDLER_RATING",
     payload: payload,

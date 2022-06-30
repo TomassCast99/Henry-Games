@@ -9,12 +9,12 @@ export default function Card({ id, genres, name, background_image, rating }) {
   return (
     <div className="card">
       <div className="card-details">
+        <div className="img-game">
+          <img src={background_image} alt={name} height="150px" width="150px" />
+        </div>
         <h3 className="text-title">{name}</h3>
         <p className="text-body">{rating}</p>
         <p className="text-body">Genres: {genres}</p>
-      </div>
-      <div className="img-game">
-        <img src={background_image} alt={name} width="200px" height="200px" />
       </div>
       <Link className="por" to={`/videogame/${id}`}>
         <button className="card-button">More info</button>

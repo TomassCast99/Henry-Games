@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
         primaryKey: true,
       },
       description: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
       },
       released: {
         type: DataTypes.DATEONLY,

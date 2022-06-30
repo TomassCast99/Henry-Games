@@ -8,6 +8,7 @@
     border: 2px solid #c3c6ce;
     transition: 0.5s ease-out;
     overflow: visible;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
    }
    
    .card-details {
@@ -23,7 +24,7 @@
     width: 60%;
     border-radius: 1rem;
     border: none;
-    background-color: #008bf8;
+    background-color: #35012C;
     color: #fff;
     font-size: 1rem;
     padding: .5rem 1rem;
@@ -32,6 +33,12 @@
     bottom: 0;
     opacity: 0;
     transition: 0.3s ease-out;
+   }
+
+   .img-game{
+    max-width:50%;
+    max-height:50%;
+    align-items: center;
    }
    
    .text-body {
@@ -46,7 +53,7 @@
    
    /*Hover*/
    .card:hover {
-    border-color: #008bf8;
+    border-color: #35012C;
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
    }
    

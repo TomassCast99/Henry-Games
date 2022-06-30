@@ -12,16 +12,17 @@ export default function Search() {
   }, [dispatch]);
 
   function handleInputChange(e) {
-    e.preventDefault();
-    setName(e.target.value);
-    dispatch(getName(name));
+    dispatch(getName(e));
   }
 
   return (
     <div>
       <div className="textInputWrapper">
         <input
-          onChange={(e) => handleInputChange(e)}
+          onChange={(e) => {
+            setName(e.target.value);
+            handleInputChange(e.target.value);
+          }}
           type="text"
           placeholder="Search"
           className="textInput"

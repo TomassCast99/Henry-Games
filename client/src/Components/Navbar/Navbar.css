@@ -6,4 +6,25 @@
     grid-row-gap: 0px;
     padding-top: 15px;
     justify-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+.tittle2{
+    color: #d6b6d3;
+    font-size: 35px;
+}
+
+.log-out, .create-game{
+        padding: 8px 20px;
+        border-radius: 2px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        background-color: #d6b6d3;
+}
+.log-out:hover,  .create-game:hover{
+    background-color: #35012C;
+    color:#d6b6d3;
+    transition: all 0.3 ease-out;
     }
