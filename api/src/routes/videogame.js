@@ -3,15 +3,8 @@ const { Videogame, Genre } = require("../db");
 const router = Router();
 
 router.post("/", async (req, res) => {
-  let {
-    name,
-    description,
-    released,
-    rating,
-    background_image,
-    platforms,
-    genres,
-  } = req.body;
+  let { name, description, rating, background_image, platforms, genres } =
+    req.body;
 
   try {
     if (!name || !description || !genres || !platforms) {
@@ -28,17 +21,18 @@ router.post("/", async (req, res) => {
     if (genreGame.length === 0) {
       return res.send("se debe ingresar un genero valido");
     }
-    // if(!background_image){
 
-    // }
+    let id = Math.floor(Math.random() * 1234567);
+
     let createGame = await Videogame.create({
+      id: id,
       name,
       description,
-      released,
       rating,
       background_image,
-      platforms,
+      platforms: platforms.toString(),
     });
+    if (createGame) console.log(createGame);
 
     createGame.addGenre(genreGame);
 

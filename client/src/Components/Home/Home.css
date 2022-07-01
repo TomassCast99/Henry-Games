@@ -1,11 +1,10 @@
 .card-game {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-column-gap: 5px;
-    grid-row-gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     margin-top: 15px;
-margin-bottom: 15px;
+    margin-bottom: 15px;
+
     }
 
     

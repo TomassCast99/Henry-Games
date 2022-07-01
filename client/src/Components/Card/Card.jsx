@@ -6,6 +6,9 @@ export default function Card({ id, genres, name, background_image, rating }) {
   // genres = genres?.map((genres) =>
   //   genres === "Massively Multiplayer" ? "MMO" : genres
   // ); ver para cambiar el nombre despues
+  if (name === "Arbolites") {
+    console.log(id);
+  }
   return (
     <div className="card">
       <div className="card-details">

@@ -44,7 +44,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getGames());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     setRange({
@@ -52,11 +52,6 @@ export default function Home() {
       last: currentPage * gamesPerPage,
     });
   }, [currentPage, gamesPerPage]);
-
-  const handleCleanFilters = (e) => {
-    e.preventDefault();
-    dispatch(cleanFilters());
-  };
 
   function handleClickOrder(e) {
     e.preventDefault();
@@ -67,13 +62,15 @@ export default function Home() {
   }
 
   function handleClick(e) {
-    e.preventDefault();
+    setGenres("All Games");
+    setRating("all");
+    setOrigin("All");
     dispatch(getGames());
   }
 
   function handleClickFilter(e) {
     e.preventDefault();
-    dispatch(handleFilter({ genres, origin }));
+    dispatch(handleFilter({ origin }));
   }
 
   function HandleFilterByRating(e) {
@@ -111,21 +108,14 @@ export default function Home() {
             useGames={useGames.length}
             paginated={paginado}
           />
-          <button
-            className="nav-links"
-            onClick={handleCleanFilters}
-            value="all"
-          >
-            Clean Filters
-          </button>
         </div>
         <div className="div-filt">
           <div className="name-filt">
             <select onChange={(e) => setName(e.target.value)}>
-              <option className="nav-links" value="asc">
+              <option key="asc" className="nav-links" value="asc">
                 A-Z
               </option>
-              <option className="nav-links" value="desc">
+              <option key="desc" className="nav-links" value="desc">
                 Z-A
               </option>
             </select>
@@ -137,13 +127,13 @@ export default function Home() {
 
           <div>
             <select value={origin} onChange={(e) => setOrigin(e.target.value)}>
-              <option className="nav-links" value="All">
+              <option key="All" className="nav-links" value="All">
                 All
               </option>
-              <option className="nav-links" value="apiGames">
+              <option key="apiGames" className="nav-links" value="apiGames">
                 Games
               </option>
-              <option className="nav-links" value="dbGames">
+              <option key="dbGames" className="nav-links" value="dbGames">
                 Created Games
               </option>
             </select>
@@ -152,14 +142,21 @@ export default function Home() {
 
           <div className="box">
             <select
+              value={rating}
               className="bot"
               onChange={(e) => {
                 setRating(e.target.value);
               }}
             >
-              <option value="all">All</option>
-              <option value="asc">High Rating</option>
-              <option value="desc">Low Rating</option>
+              <option key="all" value="all">
+                All
+              </option>
+              <option key="asc" value="asc">
+                High Rating
+              </option>
+              <option key="desc" value="desc">
+                Low Rating
+              </option>
             </select>
             <button
               onClick={(e) => {
@@ -172,27 +169,58 @@ export default function Home() {
 
           <div className="box">
             <select
+              value={genres}
               className="bot"
               onChange={(e) => {
                 setGenres(e.target.value);
               }}
             >
-              <option value="all">All Games</option>
-              <option value="RPG">RPG</option>
-              <option value="Shooter">Shooter</option>
-              <option value="Casual">Casual</option>
-              <option value="Racing">Racing</option>
-              <option value="Strategy">Strategy</option>
-              <option value="Puzzle">Puzzle</option>
-              <option value="Sports">Sports</option>
-              <option value="Action">Action</option>
-              <option value="Arcade">Arcade</option>
-              <option value="Fighting">Fighting</option>
-              <option value="Adventure">Adventure</option>
-              <option value="Platformer">Platformer</option>
-              <option value="Family">Family</option>
-              <option value="Simulation">Simulation</option>
-              <option value="Massively Multiplayer">
+              <option key="all" value="all">
+                All Games
+              </option>
+              <option key="rpg" value="RPG">
+                RPG
+              </option>
+              <option key="shooter" value="Shooter">
+                Shooter
+              </option>
+              <option key="casual" value="Casual">
+                Casual
+              </option>
+              <option key="racing" value="Racing">
+                Racing
+              </option>
+              <option key="strategy" value="Strategy">
+                Strategy
+              </option>
+              <option key="puzzle" value="Puzzle">
+                Puzzle
+              </option>
+              <option key="sports" value="Sports">
+                Sports
+              </option>
+              <option key="action" value="Action">
+                Action
+              </option>
+              <option key="arcade" value="Arcade">
+                Arcade
+              </option>
+              <option key="fighting" value="Fighting">
+                Fighting
+              </option>
+              <option key="adventure" value="Adventure">
+                Adventure
+              </option>
+              <option key="platformer" value="Platformer">
+                Platformer
+              </option>
+              <option key="family" value="Family">
+                Family
+              </option>
+              <option key="simulation" value="Simulation">
+                Simulation
+              </option>
+              <option key="mmo" value="Massively Multiplayer">
                 Massively Multiplayer
               </option>
               <option value="Board Games">Board Games</option>

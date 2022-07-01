@@ -51,6 +51,7 @@ export function getDetail(id) {
 }
 
 export function postGame(payload) {
+  console.log("action", payload);
   return async function () {
     const create = await axios.post("http://localhost:3001/videogame", payload);
     return create;

@@ -48,9 +48,9 @@ export default function GameCreate() {
     description: "",
     rating: "",
     genres: [],
-    platforms: [],
-    image: "",
-    createdInBd: false,
+    platform: [],
+    background_image: "",
+    createdDB: false,
   });
   const [errors, setErrors] = useState({});
 
@@ -73,15 +73,15 @@ export default function GameCreate() {
       input.description.length &&
       input.rating.length &&
       input.genres.length &&
-      input.platforms.length
+      input.platform.length
     ) {
       let crear = {
         name: input.name,
         description: input.description,
         rating: input.rating,
-        image: input.image,
+        background_image: input.background_image,
         genres: input.genres.join(", "),
-        platforms: input.platforms.join(", "),
+        platforms: input.platform,
       };
 
       dispatch(postGame(crear));
@@ -89,7 +89,15 @@ export default function GameCreate() {
       setResponse(true);
 
       setTimeout(() => setResponse(false), 3000);
-      window.location.replace("");
+      setInput({
+        name: "",
+        description: "",
+        rating: "",
+        genres: [],
+        platform: [],
+        background_image: "",
+        createdDB: false,
+      });
     } else {
       setErr(true);
       setLoading(false);
@@ -97,8 +105,6 @@ export default function GameCreate() {
     }
   }
   function handelChange(e) {
-    console.log(e.target.name);
-    console.log(input);
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -120,10 +126,10 @@ export default function GameCreate() {
     }
   }
   function handleSelectPlat(e) {
-    if (!input.platforms.includes(e.target.value)) {
+    if (!input.platform.includes(e.target.value)) {
       setInput({
         ...input,
-        platforms: [...input.platforms, e.target.value],
+        platform: [...input.platform, e.target.value],
       });
     }
   }
@@ -133,7 +139,7 @@ export default function GameCreate() {
     setInput({
       ...input,
       genres: input.genres.filter((temp) => temp !== e.target.value),
-      platforms: input.platforms.filter((plat) => plat !== e.target.value),
+      platforms: input.platform.filter((plat) => plat !== e.target.value),
     });
   }
 
@@ -190,13 +196,14 @@ export default function GameCreate() {
 
           <strong>{errors.description}</strong>
         </div>
+
         <div>
-          <label name="image" className="title5">
+          <label name="background_image" className="title5">
             Image:
           </label>
           <input
-            name="image"
-            value={input.image}
+            name="background_image"
+            value={input.background_image}
             placeholder="URL"
             onChange={(e) => handelChange(e)}
             required
@@ -249,10 +256,10 @@ export default function GameCreate() {
               ))}
           </select>
 
-          {!input.platforms.length ? (
-            <strong>{errors.platforms}</strong>
+          {!input.platform.length ? (
+            <strong>{errors.platform}</strong>
           ) : (
-            input.platforms.map((nombre, i) => {
+            input.platform.map((nombre, i) => {
               return (
                 <div key={i} className="concatFiltro">
                   <button onClick={handleDelete} value={nombre}>

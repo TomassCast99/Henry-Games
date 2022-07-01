@@ -2,32 +2,50 @@ const router = require("express").Router();
 const { YOUR_API_KEY } = process.env;
 const axios = require("axios");
 
+const { Videogame, Genre } = require("../db");
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-  console.log(id);
+
   try {
-    const allGamesId = await axios.get(
-      `https://api.rawg.io/api/games/${id}?key=${YOUR_API_KEY}`
-    );
-    const superData = allGamesId.data;
-    const gameId = {
-      id: superData.id,
-      name: superData.name,
-      background_image: superData.background_image,
-      released: superData.released,
-      rating: superData.rating,
-      genres: superData.genres
-        .map((e) => {
-          return e.name;
-        })
-        .join(" "),
-      platform: superData.platforms.map((e) => e.platform.name),
-      description: superData.description_raw,
-    };
-    console.log(gameId);
-    res.send(gameId);
+    console.log(id);
+    const dbGames = await Videogame.findOne({
+      where: { id: id },
+      include: {
+        model: Genre,
+        attribute: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
+    console.log(dbGames);
+    if (dbGames) {
+      dbGames.platforms = dbGames.platforms.split(",");
+      return res.json(dbGames);
+    } else {
+      const allGamesId = await axios.get(
+        `https://api.rawg.io/api/games/${id}?key=${YOUR_API_KEY}`
+      );
+      const superData = allGamesId.data;
+      const gameId = {
+        id: superData.id,
+        name: superData.name,
+        background_image: superData.background_image,
+        released: superData.released,
+        rating: superData.rating,
+        genres: superData.genres
+          .map((e) => {
+            return e.name;
+          })
+          .join(" "),
+        platform: superData.platforms.map((e) => e.platform.name),
+        description: superData.description_raw,
+      };
+      console.log(gameId);
+      res.send(gameId);
+    }
   } catch (error) {
-    res.status(400).send(error);
+    res.status(500).json(error);
     console.log(error);
   }
 });

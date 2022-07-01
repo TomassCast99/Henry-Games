@@ -24,8 +24,8 @@ export function validation(input) {
   if (!input.genres.length) {
     errors.genres = "Chose a genre";
   }
-  if (!input.platforms.length) {
-    errors.platforms = "Chose a platform";
+  if (!input.platform.length) {
+    errors.platform = "Chose a platform";
   }
 
   return errors;

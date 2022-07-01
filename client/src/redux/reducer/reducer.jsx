@@ -81,21 +81,19 @@ export default function reducer(state = initialState, { type, payload }) {
       };
 
     case "HANDLE_FILTERS":
-      let games2 = state.games;
-      const { genres, origin } = payload;
-      if (genres !== "All") {
-        games2 = games2.filter((videogame) =>
-          videogame.genres.includes(genres)
-        );
-      }
+      let games2 = state.games2;
+      const { origin } = payload;
+
       if (origin === "apiGames") {
         games2 = games2.filter((videogame) => !videogame.createdDB);
-      } else if (origin === "dbGames") {
+      }
+      if (origin === "dbGames") {
         games2 = games2.filter((videogame) => videogame.createdDB);
       }
+
       return {
         ...state,
-        games2,
+        games: games2,
       };
 
     case "HANDLER_RATING":

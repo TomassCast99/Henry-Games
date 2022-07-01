@@ -4,7 +4,7 @@ const { YOUR_API_KEY } = process.env;
 
 const getByName = async (name) => {
   try {
-    const nameDb = Videogame.findAll({
+    const nameDb = Videogame.findOne({
       where: { name: { [Op.iLike]: `%${name}%` } },
       include: {
         model: Genre,
@@ -12,7 +12,8 @@ const getByName = async (name) => {
         attributes: ["name"],
       },
     });
-    if (nameDb.legth) {
+    if (nameDb) {
+      nameDb.platforms = nameDb.platforms.split(",");
       return nameDb;
     }
     const nameVideogame = await axios.get(

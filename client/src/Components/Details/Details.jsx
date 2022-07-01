@@ -57,7 +57,11 @@ export default function Detail() {
             </div>
             <div className="base3">
               <h4>Platforms:</h4>
-              <ul>{gameDetail.platform.map((e) => e + "-")}</ul>
+              {gameDetail.platforms ? (
+                <ul>{gameDetail.platforms.join(" - ").split("")}</ul>
+              ) : (
+                <ul>{gameDetail.platform.join(" - ").split("")}</ul>
+              )}
             </div>
             <div className="base">
               <h4>Description:</h4>
