@@ -30,7 +30,6 @@ const getByName = async (name) => {
         background_image: v.background_image,
         genres: v.genres.map((genre) => genre.name),
         rating: v.rating,
-        description: v.description_raw,
       }));
       return gameName;
     }

@@ -39,7 +39,7 @@ export function getDetail(id) {
   return function (dispatch) {
     console.log("aca act", id);
     axios
-      .get("http://localhost:3001/videogames/" + id)
+      .get("http://localhost:3001/" + id)
       .then((res) => {
         return dispatch({
           type: "GET_DETAILS",

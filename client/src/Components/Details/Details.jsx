@@ -9,6 +9,7 @@ export default function Detail() {
   const { id } = useParams();
   const gameDetail = useSelector((state) => state.detail);
   const dispatch = useDispatch();
+  console.log(gameDetail);
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -31,8 +32,8 @@ export default function Detail() {
           <div>
             <img
               className="imagen"
-              src={gameDetail[0].background_image}
-              alt={gameDetail[0].name}
+              src={gameDetail.background_image}
+              alt={gameDetail.name}
               width="300px"
               height="250px"
             />
@@ -40,23 +41,23 @@ export default function Detail() {
 
           <div className="cardDetalle">
             <div>
-              <h1>{gameDetail[0].name}</h1>
+              <h1>{gameDetail.name}</h1>
             </div>
             <div className="base3">
               <h4>Genres:</h4>
-              <p>{gameDetail[0].genres}</p>
+              <p>{gameDetail.genres}</p>
             </div>
             <div className="base3">
               <h4>Rating:</h4>
-              <p>{gameDetail[0].rating}</p>
+              <p>{gameDetail.rating}</p>
             </div>
             <div className="base3">
               <h4>Released:</h4>
-              <p>{gameDetail[0].released}</p>
+              <p>{gameDetail.released}</p>
             </div>
             <div className="base3">
               <h4>Platforms:</h4>
-              <ul>{gameDetail[0].platform.map((e) => e + "-")}</ul>
+              <ul>{gameDetail.platform.map((e) => e + "-")}</ul>
             </div>
             <div className="base3">
               <h4>Description:</h4>
