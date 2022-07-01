@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getGames, getName } from "../../redux/actions/actions";
-//import "./SearchBar.css";
+import "./Search.css";
 
 export default function Search() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function Search() {
 
   return (
     <div>
-      <div className="textInputWrapper">
+      <div className="group">
         <input
           onChange={(e) => {
             setName(e.target.value);
@@ -25,9 +25,11 @@ export default function Search() {
           }}
           type="text"
           placeholder="Search"
-          className="textInput"
+          className="input"
           value={name}
         />
+        <span className="highlight"></span>
+        <span className="bar"></span>
       </div>
     </div>
   );

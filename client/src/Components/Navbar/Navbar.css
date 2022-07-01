@@ -7,24 +7,26 @@
     padding-top: 15px;
     justify-items: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: red;
     }
 
 .tittle2{
-    color: #d6b6d3;
+    color: #eb5e28;
     font-size: 35px;
 }
 
 .log-out, .create-game{
-        padding: 8px 20px;
-        border-radius: 2px;
-        outline: none;
-        border: none;
-        cursor: pointer;
-        font-size: 20px;
-        background-color: #d6b6d3;
+    background-color: transparent;
+    border: 2px solid #eb5e28;
+    color:#e5e5e5;
+    padding: 8px 20px;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    font-size: 20px;
 }
 .log-out:hover,  .create-game:hover{
-    background-color: #35012C;
-    color:#d6b6d3;
+    background-color: #eb5e28;
+    color:#e5e5e5;
     transition: all 0.3 ease-out;
     }

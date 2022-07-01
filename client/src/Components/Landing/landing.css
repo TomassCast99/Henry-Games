@@ -2,10 +2,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-content:center ;
-    background-image: url(flat-mountains.png);
+    background-image: url(flat-mountains2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; 
@@ -14,17 +11,17 @@
 
 .tittle{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
-    color: #d6b6d3;;
+    color: #eb5e28;;
 }
 
 .sub-tittle{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
-    color: #d6b6d3;;
+    color: #eb5e28;;
 }
 
 .content{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
-    color: #d6b6d3;;
+    color: #eb5e28;;
 }
 
 .btn-land{
@@ -34,10 +31,10 @@
     border: none;
     cursor: pointer;
     font-size: 20px;
-    background-color: #d6b6d3;
+    background-color: #eb5e28;
 }
 .btn-land:hover {
-background-color: #35012C;
-color:#d6b6d3;
+background-color: #eb5e28;
+color:#e5e5e5;
 transition: all 0.3 ease-out;
 }

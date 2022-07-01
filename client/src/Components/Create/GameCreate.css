@@ -1,0 +1,34 @@
+
+.form{
+    display:grid;
+    justify-content: center;
+    grid-template-rows: repeat(7, 1fr);
+    margin: 5px;
+
+  }
+  
+  .titleForm{
+  display: flex;
+  justify-content: center;
+  font-size: 45px;
+  }
+  
+
+  .concatFiltro{
+    display: inline-flex;
+  }
+  
+  .boton{
+    padding: 8px 20px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .boton:hover{
+    background-color: #35012C;
+    color:#d6b6d3;
+    transition: all 0.3 ease-out;
+  }

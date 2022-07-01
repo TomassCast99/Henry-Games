@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getDetail, resState } from "../../redux/actions/actions";
 import Loader from "../Loader/Loader";
-//import "./Details.css";
+import "./Details.css";
 
 export default function Detail() {
   const { id } = useParams();
@@ -21,7 +21,7 @@ export default function Detail() {
   return (
     <div>
       {Object.keys(gameDetail).length > 0 ? (
-        <main className="paginado2">
+        <div className="paginado2">
           <div>
             <Link to="/home">
               <button className="botonDetails" onClick={resState}>
@@ -31,11 +31,11 @@ export default function Detail() {
           </div>
           <div>
             <img
-              className="imagen"
+              className="imagdetalle"
               src={gameDetail.background_image}
               alt={gameDetail.name}
-              width="300px"
-              height="250px"
+              width="450px"
+              height="450px"
             />
           </div>
 
@@ -59,12 +59,12 @@ export default function Detail() {
               <h4>Platforms:</h4>
               <ul>{gameDetail.platform.map((e) => e + "-")}</ul>
             </div>
-            <div className="base3">
+            <div className="base">
               <h4>Description:</h4>
               <p>{gameDetail.description}</p>
             </div>
           </div>
-        </main>
+        </div>
       ) : (
         <Loader />
       )}

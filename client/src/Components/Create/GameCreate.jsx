@@ -12,7 +12,9 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { validation } from "../Validations/Validations";
 
-export default function DogCreate() {
+import "./GameCreate.css";
+
+export default function GameCreate() {
   const dispatch = useDispatch();
   const allGenres = useSelector((e) => e.genres);
   const allGames = useSelector((e) => e.games);
@@ -175,111 +177,114 @@ export default function DogCreate() {
 
           <strong>{errors.rating}</strong>
         </div>
-      </div>
-      <div>
-        <label className="title5">Description:</label>
-        <input
-          type="text"
-          name="description"
-          placeholder="Description"
-          value={input.description}
-          onChange={(e) => handelChange(e)}
-          required
-        />
+        <div>
+          <label className="title5">Description:</label>
+          <input
+            type="text"
+            name="description"
+            placeholder="Description"
+            value={input.description}
+            onChange={(e) => handelChange(e)}
+            required
+          />
 
-        <strong>{errors.description}</strong>
-      </div>
-      <div>
-        <label name="image" className="title5">
-          Image:
-        </label>
-        <input
-          name="image"
-          value={input.image}
-          placeholder="URL"
-          onChange={(e) => handelChange(e)}
-          required
-        ></input>
-      </div>
-      <div>
-        <label className="title5" value="Genres" name="Genres">
-          {" "}
-          Genres:{" "}
-        </label>
-        <select className="boton6" onChange={(e) => handleSelectGenres(e)}>
-          {allGenres &&
-            allGenres
-              .sort((a, b) => (a.name > b.name ? 1 : -1))
+          <strong>{errors.description}</strong>
+        </div>
+        <div>
+          <label name="image" className="title5">
+            Image:
+          </label>
+          <input
+            name="image"
+            value={input.image}
+            placeholder="URL"
+            onChange={(e) => handelChange(e)}
+            required
+          ></input>
+        </div>
+        <div>
+          <label className="title5" value="Genres" name="Genres">
+            {" "}
+            Genres:{" "}
+          </label>
+          <select className="boton6" onChange={(e) => handleSelectGenres(e)}>
+            {allGenres &&
+              allGenres
+                .sort((a, b) => (a.name > b.name ? 1 : -1))
+                .map((e) => (
+                  <option key={e.id} value={e.name}>
+                    {e.name}
+                  </option>
+                ))}
+          </select>
+
+          {!input.genres.length ? (
+            <strong>{errors.genres}</strong>
+          ) : (
+            input.genres.map((nombre, i) => {
+              return (
+                <div key={i} className="concatFiltro">
+                  <button onClick={handleDelete} value={nombre}>
+                    X
+                  </button>
+                  <span>{nombre}</span>
+                </div>
+              );
+            })
+          )}
+        </div>
+
+        <div>
+          <label className="title5" value="Platforms" name="Platforms">
+            {" "}
+            Platforms:{" "}
+          </label>
+          <select className="boton6" onChange={(e) => handleSelectPlat(e)}>
+            {platformss
+              .sort((a, b) => (a[0] > b[0] ? 1 : -1))
               .map((e) => (
-                <option key={e.id} value={e.name}>
-                  {e.name}
+                <option key={e} value={e}>
+                  {e}
                 </option>
               ))}
-        </select>
+          </select>
 
-        {!input.genres.length ? (
-          <strong>{errors.genres}</strong>
-        ) : (
-          input.genres.map((nombre, i) => {
-            return (
-              <div key={i} className="concatFiltro">
-                <button onClick={handleDelete} value={nombre}>
-                  X
-                </button>
-                <span>{nombre}</span>
-              </div>
-            );
-          })
+          {!input.platforms.length ? (
+            <strong>{errors.platforms}</strong>
+          ) : (
+            input.platforms.map((nombre, i) => {
+              return (
+                <div key={i} className="concatFiltro">
+                  <button onClick={handleDelete} value={nombre}>
+                    X
+                  </button>
+                  <span>{nombre}</span>
+                </div>
+              );
+            })
+          )}
+        </div>
+        <div>
+          <button
+            className="boton6"
+            type="submit"
+            onClick={(e) => handleSubmit(e)}
+          >
+            {" "}
+            Create game
+          </button>
+        </div>
+        {loading && <Loader />}
+        {response && (
+          <Message msg="The game was successfully created" bgColor="#198754" />
+        )}
+        {err && (
+          <Message
+            msg="You have to complete all the fields"
+            bgColor="#FF0000"
+          />
         )}
       </div>
-
-      <div>
-        <label className="title5" value="Platforms" name="Platforms">
-          {" "}
-          Platforms:{" "}
-        </label>
-        <select className="boton6" onChange={(e) => handleSelectPlat(e)}>
-          {platformss
-            .sort((a, b) => (a[0] > b[0] ? 1 : -1))
-            .map((e) => (
-              <option key={e} value={e}>
-                {e}
-              </option>
-            ))}
-        </select>
-
-        {!input.platforms.length ? (
-          <strong>{errors.platforms}</strong>
-        ) : (
-          input.platforms.map((nombre, i) => {
-            return (
-              <div key={i} className="concatFiltro">
-                <button onClick={handleDelete} value={nombre}>
-                  X
-                </button>
-                <span>{nombre}</span>
-              </div>
-            );
-          })
-        )}
-      </div>
-      <div>
-        <button
-          className="boton6"
-          type="submit"
-          onClick={(e) => handleSubmit(e)}
-        >
-          {" "}
-          Create game
-        </button>
-      </div>
-      {loading && <Loader />}
-      {response && (
-        <Message msg="The game was successfully created" bgColor="#198754" />
-      )}
-      {err && (
-        <Message msg="You have to complete all the fields" bgColor="#FF0000" />
-      )}
     </div>
   );
 }
