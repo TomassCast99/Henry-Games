@@ -3,9 +3,7 @@ import "./Loader.css";
 
 export default function Loader() {
   return (
-    <div
-      style={{ position: "absolute", marginTop: "20vh", marginLeft: "-7vw" }}
-    >
+    <div className="porotosLoader">
       <div className="loader">
         <svg viewBox="0 0 80 80">
           <circle id="test" cx="40" cy="40" r="32"></circle>

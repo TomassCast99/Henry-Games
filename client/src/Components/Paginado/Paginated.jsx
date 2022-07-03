@@ -10,18 +10,16 @@ export default function Paginated({ gamesPerPage, useGames, paginated }) {
 
   return (
     <div className="paginated">
-      {pageNumbers.length > 1 &&
-        pageNumbers.map((number) => {
-          return (
-            <button
-              key={number}
-              className="botonPaginado"
-              onClick={() => paginated(number)}
-            >
-              {number}
-            </button>
-          );
-        })}
+      <ul>
+        {pageNumbers.length > 1 &&
+          pageNumbers.map((number) => {
+            return (
+              <li key={number} onClick={() => paginated(number)}>
+                {number}
+              </li>
+            );
+          })}
+      </ul>
     </div>
   );
 }

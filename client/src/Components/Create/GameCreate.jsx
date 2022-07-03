@@ -139,7 +139,14 @@ export default function GameCreate() {
     setInput({
       ...input,
       genres: input.genres.filter((temp) => temp !== e.target.value),
-      platforms: input.platform.filter((plat) => plat !== e.target.value),
+    });
+  }
+
+  function deletePlat(e) {
+    e.preventDefault();
+    setInput({
+      ...input,
+      platform: input.platform.filter((plat) => plat !== e.target.value),
     });
   }
 
@@ -154,9 +161,11 @@ export default function GameCreate() {
         <h1 className="titleForm">Create Game</h1>
       </div>
 
-      <div className="form" onSubmit={resState}>
+      <form key="form" className="form" onSubmit={resState}>
         <div>
-          <label className="title5">Name:</label>
+          <label key="name" className="title5">
+            Name:
+          </label>
           <input
             type="text"
             name="name"
@@ -169,7 +178,9 @@ export default function GameCreate() {
           <strong>{errors.name}</strong>
         </div>
         <div>
-          <label className="title5">Rating:</label>
+          <label key="rating" className="title5">
+            Rating:
+          </label>
           <input
             type="number"
             name="rating"
@@ -183,22 +194,9 @@ export default function GameCreate() {
 
           <strong>{errors.rating}</strong>
         </div>
-        <div>
-          <label className="title5">Description:</label>
-          <input
-            type="text"
-            name="description"
-            placeholder="Description"
-            value={input.description}
-            onChange={(e) => handelChange(e)}
-            required
-          />
-
-          <strong>{errors.description}</strong>
-        </div>
 
         <div>
-          <label name="background_image" className="title5">
+          <label key="image" name="background_image" className="title5">
             Image:
           </label>
           <input
@@ -210,7 +208,7 @@ export default function GameCreate() {
           ></input>
         </div>
         <div>
-          <label className="title5" value="Genres" name="Genres">
+          <label key="genres" className="title5" value="Genres" name="Genres">
             {" "}
             Genres:{" "}
           </label>
@@ -225,24 +223,35 @@ export default function GameCreate() {
                 ))}
           </select>
 
-          {!input.genres.length ? (
-            <strong>{errors.genres}</strong>
-          ) : (
-            input.genres.map((nombre, i) => {
-              return (
-                <div key={i} className="concatFiltro">
-                  <button onClick={handleDelete} value={nombre}>
-                    X
-                  </button>
-                  <span>{nombre}</span>
-                </div>
-              );
-            })
-          )}
+          <div className="choosed">
+            {!input.genres.length ? (
+              <strong>{errors.genres}</strong>
+            ) : (
+              input.genres.map((nombre, i) => {
+                return (
+                  <div key={i} className="card98">
+                    <button
+                      onClick={handleDelete}
+                      value={nombre}
+                      className="cross"
+                    >
+                      X
+                    </button>
+                    <span className="videoName">{nombre}</span>
+                  </div>
+                );
+              })
+            )}
+          </div>
         </div>
 
         <div>
-          <label className="title5" value="Platforms" name="Platforms">
+          <label
+            key="platforms"
+            className="title5"
+            value="Platforms"
+            name="Platforms"
+          >
             {" "}
             Platforms:{" "}
           </label>
@@ -256,24 +265,49 @@ export default function GameCreate() {
               ))}
           </select>
 
-          {!input.platform.length ? (
-            <strong>{errors.platform}</strong>
-          ) : (
-            input.platform.map((nombre, i) => {
-              return (
-                <div key={i} className="concatFiltro">
-                  <button onClick={handleDelete} value={nombre}>
-                    X
-                  </button>
-                  <span>{nombre}</span>
-                </div>
-              );
-            })
-          )}
+          <div className="choosed">
+            {!input.platform.length ? (
+              <strong>{errors.platform}</strong>
+            ) : (
+              input.platform.map((nombre, i) => {
+                return (
+                  <div key={i} className="card98">
+                    <button
+                      onClick={deletePlat}
+                      value={nombre}
+                      className="cross"
+                    >
+                      X
+                    </button>
+                    <span className="videoName">{nombre}</span>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </div>
+        <div className="description">
+          <label key="description" className="title5">
+            Description:
+          </label>
+          <textarea
+            type="text"
+            name="description"
+            placeholder="Description"
+            value={input.description}
+            onChange={(e) => handelChange(e)}
+            style={{ width: "100%", height: "100%" }}
+            wrap="soft"
+            autoFocus
+            required
+          />
+
+          <strong>{errors.description}</strong>
         </div>
         <div>
           <button
-            className="boton6"
+            key="submit"
+            className="btn-createGame"
             type="submit"
             onClick={(e) => handleSubmit(e)}
           >
@@ -291,7 +325,7 @@ export default function GameCreate() {
             bgColor="#FF0000"
           />
         )}
-      </div>
+      </form>
     </div>
   );
 }

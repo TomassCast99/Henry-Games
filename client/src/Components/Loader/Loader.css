@@ -1,6 +1,12 @@
+.porotosLoader{
+position: absolute; 
+margin-top: 20vh; 
+margin-left: -7vw 
+}
+
 .loader {
-    --path: #2f3545;
-    --dot: #5628ee;
+    --path: #797670;
+    --dot: #eb5e28;
     --duration: 3s;
     width: 44px;
     height: 44px;

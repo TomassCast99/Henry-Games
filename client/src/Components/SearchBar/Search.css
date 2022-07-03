@@ -10,6 +10,7 @@
     border: none;
     border-bottom: 1px solid #515151;
     background: transparent;
+    color: #ccc5b9;
    }
    
    .input:focus {

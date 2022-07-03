@@ -91,8 +91,8 @@ export default function Home() {
 
   return (
     <div>
-      <Navbar />
       <div className="home-container">
+        <Navbar />
         <div className="div-buttons">
           {" "}
           <button
@@ -103,11 +103,6 @@ export default function Home() {
           >
             Reload Games
           </button>
-          <Paginated
-            gamesPerPage={gamesPerPage}
-            useGames={useGames.length}
-            paginated={paginado}
-          />
         </div>
         <div className="div-filt">
           <div className="name-filt">
@@ -236,6 +231,11 @@ export default function Home() {
             </button>
           </div>
         </div>
+        <Paginated
+          gamesPerPage={gamesPerPage}
+          useGames={useGames.length}
+          paginated={paginado}
+        />
 
         <div className="card-game">
           {!currentGames.length ? (
