@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 import {
   getGames,
-  cleanFilters,
   handlerOrder,
   handleFilter,
   handlerRating,
@@ -31,6 +30,8 @@ export default function Home() {
   const [genres, setGenres] = useState("All");
   const [origin, setOrigin] = useState("All");
 
+  const [charge, setCharge] = useState(false); //para cuando busca por un genero que no tiene juego entre los 100 traidos
+
   const [currentGames, setCurrentGames] = useState(
     useGames?.slice(range.first, range.last)
   );
@@ -43,6 +44,10 @@ export default function Home() {
   }, [useGames, range.first, range.last]);
 
   useEffect(() => {
+    setCharge(true);
+    setTimeout(() => {
+      setCharge(false);
+    }, 9000);
     dispatch(getGames());
   }, []);
 
@@ -252,13 +257,12 @@ export default function Home() {
         />
 
         <div className="card-game">
-          {!currentGames.length ? (
+          {charge ? (
             <div>
               <Loader />
             </div>
-          ) : (
+          ) : currentGames.length ? (
             currentGames.map((d) => {
-              console.log(d);
               return (
                 <Card
                   key={d.id}
@@ -270,6 +274,11 @@ export default function Home() {
                 />
               );
             })
+          ) : (
+            <div className="div-not-found">
+              <h4>Ups! Game not found</h4>
+              <h5>Try creating a new game</h5>
+            </div>
           )}
         </div>
       </div>

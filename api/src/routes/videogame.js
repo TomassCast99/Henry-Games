@@ -38,8 +38,6 @@ router.post("/", async (req, res) => {
 
     createGame.addGenre(genreGame);
 
-    console.log(createGame);
-
     res.send("El jueguito fue creado con exito");
   } catch (error) {
     console.log(error);

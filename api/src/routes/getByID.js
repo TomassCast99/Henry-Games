@@ -7,7 +7,6 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    console.log(id);
     const dbGames = await Videogame.findOne({
       where: { id: id },
       include: {
@@ -18,7 +17,6 @@ router.get("/:id", async (req, res) => {
         },
       },
     });
-    console.log(dbGames);
     if (dbGames) {
       dbGames.platforms = dbGames.platforms.split(",");
       return res.json(dbGames);
@@ -41,7 +39,6 @@ router.get("/:id", async (req, res) => {
         platform: superData.platforms.map((e) => e.platform.name),
         description: superData.description_raw,
       };
-      console.log(gameId);
       res.send(gameId);
     }
   } catch (error) {
