@@ -56,4 +56,5 @@ transition: all 0.3 ease-out;
     color: #1a1b1b;
     padding: 0px;
     margin: 0%;
+   justify-content: center;
 }

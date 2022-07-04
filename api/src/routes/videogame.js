@@ -6,8 +6,11 @@ router.post("/", async (req, res) => {
   let { name, description, rating, background_image, platforms, genres } =
     req.body;
 
+  let genres2 = genres.split(",");
+  let genres3 = genres2.map((g) => g.trim());
+
   try {
-    if (!name || !description || !genres || !platforms) {
+    if (!name || !description || !genres3 || !platforms) {
       return res.status(400).send("Faltan parametros");
     }
     const findVideogame = await Videogame.findAll({ where: { name: name } });
@@ -16,7 +19,7 @@ router.post("/", async (req, res) => {
     }
 
     let genreGame = await Genre.findAll({
-      where: { name: genres },
+      where: { name: genres3 },
     });
     if (genreGame.length === 0) {
       return res.send("se debe ingresar un genero valido");
@@ -32,9 +35,10 @@ router.post("/", async (req, res) => {
       background_image,
       platforms: platforms.toString(),
     });
-    if (createGame) console.log(createGame);
 
     createGame.addGenre(genreGame);
+
+    console.log(createGame);
 
     res.send("El jueguito fue creado con exito");
   } catch (error) {

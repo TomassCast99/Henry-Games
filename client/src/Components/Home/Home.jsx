@@ -258,6 +258,7 @@ export default function Home() {
             </div>
           ) : (
             currentGames.map((d) => {
+              console.log(d);
               return (
                 <Card
                   key={d.id}

@@ -60,7 +60,11 @@ export default function Detail() {
           </div>
           <div className="base3">
             <h4>Genres:</h4>
-            <p>{gameDetail.genres}</p>
+            <p>
+              {Array.isArray(gameDetail.genres)
+                ? gameDetail.genres.map((e) => e.name + " ")
+                : gameDetail.genres}
+            </p>
           </div>
           <div className="base3">
             <h4>Rating:</h4>

@@ -99,7 +99,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case "HANDLER_RATING":
       let rating =
         payload === "desc"
-          ? state.games.sort(function (a, b) {
+          ? state.games2.sort(function (a, b) {
               if (a.rating > b.rating) {
                 return 1;
               }
@@ -108,7 +108,7 @@ export default function reducer(state = initialState, { type, payload }) {
               }
               return 0;
             })
-          : state.games.sort(function (a, b) {
+          : state.games2.sort(function (a, b) {
               if (a.rating > b.rating) {
                 return -1;
               }
