@@ -22,11 +22,13 @@
     border: 2px solid #eb5e28;
     border-radius: 35px;
     width: 1000px;
-    height: 700px;
-    margin: 30px;
+    height: 725px;
+    margin: 15px;
     background-color: rgba(201, 192, 192, 0.856);
     text-align: center;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
     align-content: center;
     color:  #1a1b1b;
 }  
@@ -48,13 +50,10 @@ transition: all 0.3 ease-out;
 }
 
 .base3{
-    display: column;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: #1a1b1b;
-    padding: 0px;
-    margin: 0%;
-   justify-content: center;
+    padding: 0%;
 }

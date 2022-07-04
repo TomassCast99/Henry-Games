@@ -53,7 +53,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case "HANDLER_NAME":
       let sortAlf;
       if (payload === "asc") {
-        sortAlf = state.games.sort((a, b) => {
+        sortAlf = state.games2.sort((a, b) => {
           if (a.name.charAt(0) > b.name.charAt(0)) {
             return 1;
           }
@@ -63,7 +63,7 @@ export default function reducer(state = initialState, { type, payload }) {
           return 0;
         });
       } else if (payload === "desc") {
-        sortAlf = state.games.sort((a, b) => {
+        sortAlf = state.games2.sort((a, b) => {
           if (a.name.charAt(0) > b.name.charAt(0)) {
             return -1;
           }
