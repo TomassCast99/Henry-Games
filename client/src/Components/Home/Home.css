@@ -15,7 +15,7 @@ grid-column-gap: 0px;
 grid-row-gap: 0px;
 margin-top: 25px;
 margin-bottom: 50px;
-justify-content: center;
+justify-content: space-around;
 }  
 
 .div-buttons{
@@ -35,7 +35,7 @@ justify-content: center;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; 
-    height: 165vh;
+    height: 170vh;
 }
 
 .home-btn{
@@ -55,3 +55,31 @@ justify-content: center;
     color:#e5e5e5;
     transition: all 0.3 ease-out;
 }
+
+.btn-filtros{
+    background-color: transparent;
+    border: 2px solid #eb5e28;
+    color:#e5e5e5;
+    padding: 8px 20px;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+    font-size: 20px;
+
+}
+
+.btn-filtros:hover {
+background-color: #eb5e28;
+color:#e5e5e5;
+transition: all 0.3 ease-out;
+}
+
+.name-filt{
+    color: #e5e5e5;
+    background: #747474a4;;
+    border: 2px solid #eb5e28;
+    border-radius: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+

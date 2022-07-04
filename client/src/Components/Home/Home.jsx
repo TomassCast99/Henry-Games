@@ -105,8 +105,11 @@ export default function Home() {
           </button>
         </div>
         <div className="div-filt">
-          <div className="name-filt">
-            <select onChange={(e) => setName(e.target.value)}>
+          <div>
+            <select
+              className="name-filt"
+              onChange={(e) => setName(e.target.value)}
+            >
               <option key="asc" className="nav-links" value="asc">
                 A-Z
               </option>
@@ -115,13 +118,17 @@ export default function Home() {
               </option>
             </select>
 
-            <button onClick={handleClickOrder} className="sort">
-              Alphabetical Order
+            <button onClick={handleClickOrder} className="btn-filtros">
+              Filter
             </button>
           </div>
 
           <div>
-            <select value={origin} onChange={(e) => setOrigin(e.target.value)}>
+            <select
+              className="name-filt"
+              value={origin}
+              onChange={(e) => setOrigin(e.target.value)}
+            >
               <option key="All" className="nav-links" value="All">
                 All
               </option>
@@ -132,13 +139,18 @@ export default function Home() {
                 Created Games
               </option>
             </select>
-            <button onClick={(e) => handleClickFilter(e)}>Filter</button>
+            <button
+              onClick={(e) => handleClickFilter(e)}
+              className="btn-filtros"
+            >
+              Filter
+            </button>
           </div>
 
           <div className="box">
             <select
               value={rating}
-              className="bot"
+              className="name-filt"
               onChange={(e) => {
                 setRating(e.target.value);
               }}
@@ -157,6 +169,7 @@ export default function Home() {
               onClick={(e) => {
                 HandleFilterByRating(e);
               }}
+              className="btn-filtros"
             >
               Filter
             </button>
@@ -165,7 +178,7 @@ export default function Home() {
           <div className="box">
             <select
               value={genres}
-              className="bot"
+              className="name-filt"
               onChange={(e) => {
                 setGenres(e.target.value);
               }}
@@ -226,6 +239,7 @@ export default function Home() {
               onClick={(e) => {
                 HandleFilterByGenres(e);
               }}
+              className="btn-filtros"
             >
               Filter
             </button>

@@ -167,6 +167,7 @@ export default function GameCreate() {
             Name:
           </label>
           <input
+            key="name2"
             type="text"
             name="name"
             placeholder="Game name"
@@ -184,6 +185,7 @@ export default function GameCreate() {
           <input
             type="number"
             name="rating"
+            key="rating2"
             placeholder="Rating"
             value={input.rating}
             onChange={(e) => handelChange(e)}
@@ -200,6 +202,7 @@ export default function GameCreate() {
             Image:
           </label>
           <input
+            key="image2"
             name="background_image"
             value={input.background_image}
             placeholder="URL"
@@ -212,7 +215,11 @@ export default function GameCreate() {
             {" "}
             Genres:{" "}
           </label>
-          <select className="boton6" onChange={(e) => handleSelectGenres(e)}>
+          <select
+            key="genres2"
+            className="boton6"
+            onChange={(e) => handleSelectGenres(e)}
+          >
             {allGenres &&
               allGenres
                 .sort((a, b) => (a.name > b.name ? 1 : -1))
@@ -255,7 +262,11 @@ export default function GameCreate() {
             {" "}
             Platforms:{" "}
           </label>
-          <select className="boton6" onChange={(e) => handleSelectPlat(e)}>
+          <select
+            key="platforms2"
+            className="boton6"
+            onChange={(e) => handleSelectPlat(e)}
+          >
             {platformss
               .sort((a, b) => (a[0] > b[0] ? 1 : -1))
               .map((e) => (
@@ -291,6 +302,7 @@ export default function GameCreate() {
             Description:
           </label>
           <textarea
+            key="description2"
             type="text"
             name="description"
             placeholder="Description"
