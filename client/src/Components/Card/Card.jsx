@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Card.css";
+import imagenVG from "../videogame.jpg";
 
 export default function Card({ id, genres, name, background_image, rating }) {
   // genres = genres?.map((genres) =>
@@ -11,7 +12,12 @@ export default function Card({ id, genres, name, background_image, rating }) {
     <div className="card">
       <div className="card-details">
         <div className="img-game">
-          <img src={background_image} alt={name} height="150px" width="150px" />
+          <img
+            src={background_image || imagenVG}
+            alt={name}
+            height="150px"
+            width="150px"
+          />
         </div>
         <h3 className="text-title">{name}</h3>
         <p className="text-body">{rating}</p>

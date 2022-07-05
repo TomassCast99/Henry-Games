@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getDetail, resState } from "../../redux/actions/actions";
 import Loader from "../Loader/Loader";
 import "./Details.css";
+import imagenVG from "../videogame.jpg";
 
 export default function Detail() {
   const { id } = useParams();
@@ -47,7 +48,7 @@ export default function Detail() {
         <div>
           <img
             className="imagdetalle"
-            src={gameDetail.background_image}
+            src={gameDetail.background_image || imagenVG}
             alt={gameDetail.name}
             width="450px"
             height="450px"
