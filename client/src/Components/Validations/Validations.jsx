@@ -21,6 +21,12 @@ export function validation(input) {
     errors.rating = "Negative numbers are not allowed ";
   }
 
+  if (!input.released) {
+    errors.released = "Enter the year please";
+  } else if (input.released < 0) {
+    errors.released = "Negative numbers are not allowed ";
+  }
+
   if (!input.genres.length) {
     errors.genres = "Chose a genre";
   }

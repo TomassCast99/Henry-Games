@@ -47,6 +47,7 @@ export default function GameCreate() {
     name: "",
     description: "",
     rating: "",
+    released: "",
     genres: [],
     platform: [],
     background_image: "",
@@ -72,6 +73,7 @@ export default function GameCreate() {
       regexName.test(input.name) &&
       input.description.length &&
       input.rating.length &&
+      input.released.length &&
       input.genres.length &&
       input.platform.length
     ) {
@@ -79,6 +81,7 @@ export default function GameCreate() {
         name: input.name,
         description: input.description,
         rating: input.rating,
+        released: input.released,
         background_image: input.background_image,
         genres: input.genres.join(", "),
         platforms: input.platform,
@@ -93,6 +96,7 @@ export default function GameCreate() {
         name: "",
         description: "",
         rating: "",
+        released: "",
         genres: [],
         platform: [],
         background_image: "",
@@ -151,17 +155,21 @@ export default function GameCreate() {
   }
 
   return (
-    <div className="formPerfil">
-      <div className="up-things">
+    <div key="form" className="formPerfil">
+      <div key="up" className="up-things">
         <Link to="/home">
-          <button className="boton">Home</button>
+          <button key="up1" className="boton">
+            Home
+          </button>
         </Link>
       </div>
-      <div>
-        <h1 className="titleForm">Create Game</h1>
+      <div key="up45">
+        <h1 key="up2" className="titleForm">
+          Create Game
+        </h1>
       </div>
 
-      <form key="form" className="form" onSubmit={resState}>
+      <form key="form4" className="form" onSubmit={resState}>
         <div>
           <label key="name" className="title5">
             Name:
@@ -198,6 +206,23 @@ export default function GameCreate() {
         </div>
 
         <div>
+          <label key="released" className="title5">
+            Released:
+          </label>
+          <input
+            type="number"
+            name="released"
+            key="released2"
+            placeholder="Released"
+            value={input.released}
+            onChange={(e) => handelChange(e)}
+            required
+          />
+
+          <strong>{errors.released}</strong>
+        </div>
+
+        <div>
           <label key="image" name="background_image" className="title5">
             Image:
           </label>
@@ -207,7 +232,6 @@ export default function GameCreate() {
             value={input.background_image}
             placeholder="URL"
             onChange={(e) => handelChange(e)}
-            required
           ></input>
         </div>
         <div>
@@ -241,10 +265,13 @@ export default function GameCreate() {
                       onClick={handleDelete}
                       value={nombre}
                       className="cross"
+                      key="botonX"
                     >
                       X
                     </button>
-                    <span className="videoName">{nombre}</span>
+                    <span key="video" className="videoName">
+                      {nombre}
+                    </span>
                   </div>
                 );
               })
@@ -284,20 +311,23 @@ export default function GameCreate() {
                 return (
                   <div key={i} className="card98">
                     <button
+                      key="botonX2"
                       onClick={deletePlat}
                       value={nombre}
                       className="cross"
                     >
                       X
                     </button>
-                    <span className="videoName">{nombre}</span>
+                    <span key="video56" className="videoName">
+                      {nombre}
+                    </span>
                   </div>
                 );
               })
             )}
           </div>
         </div>
-        <div className="description">
+        <div key="description3" className="description">
           <label key="description" className="title5">
             Description:
           </label>
