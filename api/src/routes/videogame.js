@@ -3,8 +3,15 @@ const { Videogame, Genre } = require("../db");
 const router = Router();
 
 router.post("/", async (req, res) => {
-  let { name, description, rating, background_image, platforms, genres } =
-    req.body;
+  let {
+    name,
+    description,
+    rating,
+    released,
+    background_image,
+    platforms,
+    genres,
+  } = req.body;
 
   let genres2 = genres.split(",");
   let genres3 = genres2.map((g) => g.trim());
@@ -32,6 +39,7 @@ router.post("/", async (req, res) => {
       name,
       description,
       rating,
+      released,
       background_image,
       platforms: platforms.toString(),
     });
