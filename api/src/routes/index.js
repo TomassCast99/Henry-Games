@@ -3,6 +3,7 @@ const genres = require("./genres");
 const postVid = require("./videogame");
 const allGames = require("./allGames");
 const getByID = require("./getByID");
+
 const router = Router();
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
