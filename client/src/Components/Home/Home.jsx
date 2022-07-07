@@ -47,7 +47,7 @@ export default function Home() {
     setCharge(true);
     setTimeout(() => {
       setCharge(false);
-    }, 9000);
+    }, 10000);
     dispatch(getGames());
   }, []);
 
