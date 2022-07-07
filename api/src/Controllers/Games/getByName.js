@@ -23,7 +23,6 @@ const getByName = async (name) => {
     let gameName = [];
     if (nameVideogame.data) {
       let r = nameVideogame.data.results;
-      console.log("acaacca", r);
       gameName = r.map((v) => ({
         name: v.name,
         id: v.id,
