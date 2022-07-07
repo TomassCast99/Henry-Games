@@ -341,7 +341,6 @@ export default function GameCreate() {
             style={{ width: "100%", height: "100%" }}
             wrap="soft"
             autoFocus
-            required
           />
 
           <strong>{errors.description}</strong>

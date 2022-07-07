@@ -97,7 +97,7 @@ export default function Home() {
   return (
     <div>
       <div className="home-container">
-        <Navbar />
+        <Navbar setCurrentPage={setCurrentPage} />
         <div className="div-buttons">
           {" "}
           <button

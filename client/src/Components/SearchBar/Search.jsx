@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { getGames, getName } from "../../redux/actions/actions";
 import "./Search.css";
 
-export default function Search() {
+export default function Search({ setCurrentPage }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 
@@ -13,6 +13,7 @@ export default function Search() {
 
   function handleInputChange(e) {
     dispatch(getName(e));
+    setCurrentPage(1);
   }
 
   return (
