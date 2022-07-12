@@ -24,7 +24,6 @@ export default function GameCreate() {
 
   let platformss = [
     "PC",
-    "PlayStation",
     "Xbox",
     "Nintendo Switch",
     "iOS",
@@ -91,7 +90,7 @@ export default function GameCreate() {
       setLoading(false);
       setResponse(true);
 
-      setTimeout(() => setResponse(false), 3000);
+      setTimeout(() => setResponse(false), 4000);
       setInput({
         name: "",
         description: "",
@@ -105,7 +104,7 @@ export default function GameCreate() {
     } else {
       setErr(true);
       setLoading(false);
-      setTimeout(() => setErr(false), 3000);
+      setTimeout(() => setErr(false), 4000);
     }
   }
   function handelChange(e) {

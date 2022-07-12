@@ -124,7 +124,7 @@ export default function Home() {
             </select>
 
             <button onClick={handleClickOrder} className="btn-filtros">
-              Filter
+              Order
             </button>
           </div>
 
@@ -176,7 +176,7 @@ export default function Home() {
               }}
               className="btn-filtros"
             >
-              Filter
+              Order
             </button>
           </div>
 
