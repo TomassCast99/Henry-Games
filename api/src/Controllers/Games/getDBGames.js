@@ -10,7 +10,6 @@ const getInfoDB = async () => {
       },
     },
   });
-  console.log(dbData);
   return dbData;
 };
 

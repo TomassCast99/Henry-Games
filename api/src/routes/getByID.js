@@ -3,6 +3,7 @@ const { YOUR_API_KEY } = process.env;
 const axios = require("axios");
 
 const { Videogame, Genre } = require("../db");
+
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
 

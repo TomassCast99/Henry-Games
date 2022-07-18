@@ -180,7 +180,6 @@ export default function GameCreate() {
             placeholder="Game name"
             value={input.name}
             onChange={(e) => handelChange(e)}
-            required
           />
 
           <strong>{errors.name}</strong>
@@ -198,7 +197,6 @@ export default function GameCreate() {
             onChange={(e) => handelChange(e)}
             min="1"
             max="5"
-            required
           />
 
           <strong>{errors.rating}</strong>
@@ -215,7 +213,6 @@ export default function GameCreate() {
             placeholder="Released"
             value={input.released}
             onChange={(e) => handelChange(e)}
-            required
           />
 
           <strong>{errors.released}</strong>
@@ -363,6 +360,7 @@ export default function GameCreate() {
           <Message
             msg="You have to complete all the fields"
             bgColor="#FF0000"
+            setTimeout={() => 4000}
           />
         )}
       </form>
